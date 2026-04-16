@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: n8n-python
+    env: python
+    plan: free
+
+    buildCommand: |
+      npm install -g n8n
+
+    startCommand: python app.py
+
+    envVars:
+      - key: N8N_HOST
+        value: your-app-name.onrender.com
+
+      - key: N8N_PROTOCOL
+        value: https
+
+      - key: WEBHOOK_URL
+        value: https://your-app-name.onrender.com/
+
+      - key: N8N_PORT
+        value: 5678
+
+      - key: NODE_ENV
+        value: production
+
+      # 🔥 NO LOGIN
+      - key: N8N_USER_MANAGEMENT_DISABLED
+        value: true
+
+      - key: N8N_PROXY_HOPS
+        value: 1
