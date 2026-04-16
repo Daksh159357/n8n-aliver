@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: n8n-python
+    name: n8n-normal
     env: python
     plan: free
 
@@ -24,10 +24,6 @@ services:
 
       - key: NODE_ENV
         value: production
-
-      # 🔥 NO LOGIN
-      - key: N8N_USER_MANAGEMENT_DISABLED
-        value: true
 
       - key: N8N_PROXY_HOPS
         value: 1
