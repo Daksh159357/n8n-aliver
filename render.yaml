@@ -1,28 +1,26 @@
 services:
   - type: web
-    name: n8n-python
-    env: python
+    name: n8n-docker
+    env: docker
     plan: free
 
-    buildCommand: |
-      apt-get update
-      apt-get install -y nodejs npm
-      npm install -g n8n
-
-    startCommand: python app.py
+    autoDeploy: true
 
     envVars:
-      - key: NODE_ENV
-        value: production
-
       - key: N8N_HOST
-        value: 0.0.0.0
+        value: your-app-name.onrender.com
 
       - key: N8N_PROTOCOL
         value: https
 
+      - key: WEBHOOK_URL
+        value: https://your-app-name.onrender.com/
+
+      - key: N8N_PORT
+        value: 5678
+
       - key: N8N_PROXY_HOPS
         value: 1
 
-      # IMPORTANT: do NOT set N8N_PORT here
-      # Render will provide PORT automatically
+      - key: NODE_ENV
+        value: production
